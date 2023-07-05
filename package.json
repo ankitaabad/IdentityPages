@@ -42,7 +42,6 @@
 		"image-pixels": "^2.2.2",
 		"load-image": "^1.0.0",
 		"playwright": "^1.35.1",
-		"puppeteer": "^20.7.4",
 		"website-logo": "^2.0.0"
 	}
 }

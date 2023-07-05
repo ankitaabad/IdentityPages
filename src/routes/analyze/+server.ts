@@ -1,5 +1,4 @@
 import { json } from '@sveltejs/kit';
-import puppeteer from 'puppeteer';
 import { chromium } from 'playwright';
 import palette from 'image-palette';
 const browser = await chromium.launch(); // Or 'firefox' or 'webkit'.
