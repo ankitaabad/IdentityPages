@@ -1,7 +1,8 @@
 import { json } from '@sveltejs/kit';
 import { chromium } from 'playwright';
 import palette from 'image-palette';
-const browser = await chromium.launch({executablePath:"/opt/buildhome/.cache/ms-playwright"}); // Or 'firefox' or 'webkit'.
+console.log({path: chromium.executablePath()})
+const browser = await chromium.launch({executablePath:chromium.executablePath()}); // Or 'firefox' or 'webkit'.
 
 /** @type {import('./$types').RequestHandler} */
 export async function GET({ url }) {
