@@ -39,6 +39,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@sveltejs/adapter-static": "^2.0.2",
 		"image-palette": "^2.1.0",
 		"image-pixels": "^2.2.2",
 		"load-image": "^1.0.0",
