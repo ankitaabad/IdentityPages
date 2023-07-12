@@ -2,12 +2,13 @@
 	import { LightSwitch } from '@skeletonlabs/skeleton';
 	import { onMount } from 'svelte';
 
-
 	let src = '';
 	let logo = '';
 	let frameSrc = '';
 	let time = 0;
-  let colors = []
+
+	let timeVision = 0;
+	let colors = [];
 	const updateFrameSrc = async () => {
 		console.log('inside updateFrameSRC');
 		frameSrc = src;
@@ -16,9 +17,21 @@
 		const a = await result.json();
 
 		const t1 = performance.now();
-		time = Math.round((t1 - t)/1000)
+		time = Math.round((t1 - t) / 1000);
 		logo = a.src;
-    colors = a.colors
+
+		// calling Nathan's backend
+		const tBeginVision = performance.now();
+
+		const visionApiResp = await fetch(`https://idx-poc.onrender.com/process?url=${src}`);
+		const visionBody = await visionApiResp.json();
+
+		const tEndVision = performance.now();
+		timeVision = Math.round((tEndVision - tBeginVision) / 1000);
+
+		console.log(visionBody);
+
+		colors = a.colors;
 	};
 	const frameLoaded = () => {
 		console.log('Frame is loaded');
@@ -39,10 +52,10 @@
 	>
 </div>
 <div class="flex justify-center mt-10">
-	<img src={logo}  width="100px" />
+	<img src={logo} width="100px" />
 </div>
 <div class="flex justify-center">
-	<label for="" class="label" class:hidden={time === 0}>took {time } sec to fetch</label>
+	<label for="" class="label" class:hidden={time === 0}>took {time} sec to fetch</label>
 </div>
 <!-- {#if colors.length> 0}
 palette
