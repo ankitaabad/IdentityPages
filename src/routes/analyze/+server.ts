@@ -2,7 +2,6 @@ import { json } from '@sveltejs/kit';
 import { chromium } from 'playwright';
 import palette from 'image-palette';
 import pixels from 'image-pixels';
-import axios from 'axios';
 // import { getColorFr\omURL,getPaletteFromURL } from 'color-thief-node'
 
 /** @type {import('./$types').RequestHandler} */
