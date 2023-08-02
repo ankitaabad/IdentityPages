@@ -3,7 +3,7 @@
 	import Login from '$lib/components/Login.svelte';
 	import { LightSwitch, ProgressRadial } from '@skeletonlabs/skeleton';
 	import { onMount, tick } from 'svelte';
-	const domains = ['safebridge.net','britbox.com','pelmorex.com','mapegy.com','antstack.com', 'loginradius.com', 'skeleton.dev','pptr.dev','playwright.dev'];
+	const domains = ['safebridge.net','pelmorex.com','mapegy.com','antstack.com', 'loginradius.com', 'skeleton.dev','pptr.dev','facebook.com','playwright.dev','britbox.com'];
 	const selectedDomains = [];
 	let result = [];
 	let colorThief;
@@ -95,10 +95,14 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"
 	></script>
-</svelte:head>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@1.5.7/dist/lottie-player.js"></script>
 
+</svelte:head>
 <!-- svelte-ignore a11y-missing-attribute -->
 <LightSwitch />
+
+
+
 <div class="flex justify-center mt-4 mx-4">
 	<input type="text" bind:value={src} class="input rounded-md" placeholder="Enter Domain" />
 	<button
@@ -134,17 +138,30 @@
 <div class="flex justify-center">
 	<label for="" class="label" class:hidden={time === 0}>took {time} sec to fetch</label>
 </div>
-{#if result === null}
-<div class="flex justify-center">
 
-	<ProgressRadial />
-</div>
-{:else}
-	{#each result as r}
-		<Login {r} />
-	{/each}
-{/if}
 
+    {#if result === null}
+    <div class="flex justify-center">
+    
+      <ProgressRadial />
+    </div>
+    {:else}
+    {#each result as r}
+    <div class="flex flex-column w-3/5 mx-auto">
+      <div class="w-1/2 border-2">
+        <lottie-player src="{r.cc}.json" speed='1'  loop autoplay direction=“1” mode=“normal”></lottie-player>
+      </div>
+
+    <div class="w-1/2 border-2">
+
+      
+        <Login {r} />
+    </div>
+  </div>
+  {/each} 
+
+    {/if}
+ 
 <!-- {#await updateFrameSrc()}
 	<ProgressRadial />
 {:then result}

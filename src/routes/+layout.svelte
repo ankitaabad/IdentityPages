@@ -6,5 +6,13 @@
 	// Most of your app wide CSS should be put in this file
 	import '../app.postcss';
 </script>
+<svelte:head>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&display=swap" rel="stylesheet">
 
+</svelte:head>
 <slot />
+<style>
+  * {
+  font-family: 'Barlow', sans-serif;
+}
+</style>
